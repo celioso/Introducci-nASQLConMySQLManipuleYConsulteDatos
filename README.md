@@ -93,3 +93,148 @@ Si vas a comprobar en Workbench verás que la base de datos jugos se ha añadido
 ¿Comenzando en esta etapa? Aquí puedes descargar los archivos del proyecto que hemos avanzado hasta el aula anterior.
 
 [Descargue los archivos en Github](https://github.com/alura-es-cursos/1790-introduccion-a-sql-con-mysql/tree/aula-3 "Descargue los archivos en Github") o haga clic [aquí](https://github.com/alura-es-cursos/1790-introduccion-a-sql-con-mysql/archive/refs/heads/aula-3.zip "aquí") para descargarlos directamente.
+
+# Creando tabla de vendedores
+
+Nuestro sistema de ventas solicita la creación de una tabla más para los vendedores.
+
+**Información importante:**
+
+El nombre de la tabla debe ser `TABLA_DE_VENDEDORES`.
+
+El vendedor tiene el número interno de la matrícula, que será almacenado en el campo MATRÍCULA, que debe ser un *string* de 5 posiciones.
+
+El nombre del vendedor deberá ser almacenado en el campo `NOMBRE`, y debe ser un string de 100 posiciones.
+
+Crear el campo `PORCENTAJE_COMISION` que representa el porcentaje de comisión que el vendedor gana sobre cada venta.
+
+Crear esta tabla en la base de datos **jugos**.
+
+```sql
+CREATE TABLE TABLA_DE_VENDEDORES (
+    MATRICULA varchar(5), 
+    NOMBRE varchar(100), 
+    PORCENTAJE_COMISION float);
+```
+
+## Eliminando tabla de vendedores
+
+Eliminar la tabla `TABLA_DE_VENDEDORES2` usando script SQL.
+
+Para crear la tabla antes de eliminarla, ejecute:
+
+```sql
+CREATE TABLE TABLA_DE_VENDEDORES2 (
+    MATRICULA varchar(5), 
+    NOMBRE varchar(100), 
+    PORCENTAJE_COMISION float);
+```
+
+### Eliminar tabla
+
+```sql
+DROP TABLE TABLA_DE_VENDEDORES2;
+```
+
+## Haga lo que hicimos en aula
+
+Llegó la hora de que sigas todos los pasos realizados por mí durante esta clase. Si ya lo has hecho ¡Excelente! Si todavía no, es importante que ejecutes lo que fue visto en los vídeos para que puedas continuar con la próxima aula.
+
+1. Accede a MySQL Workbench.
+
+2. Crea la tabla de clientes digitando el siguiente comando:
+
+```sql
+USE JUGOS;
+CREATE TABLE TBCLIENTES(
+DNI VARCHAR(20),
+NOMBRE VARCHAR(150),
+DIRECCION1 VARCHAR(150),
+DIRECCION2 VARCHAR(150),
+BARRIO VARCHAR(50),
+CIUDAD VARCHAR(50),
+ESTADO VARCHAR(50),
+CP VARCHAR(10),
+EDAD SMALLINT,
+SEXO VARCHAR(1),
+LIMITE_CREDITO FLOAT,
+VOLUMEN_COMPRA FLOAT,
+PRIMERA_COMPRA BIT(1));
+```
+
+3. Ejecuta el comando y después actualiza el árbol de Workbench para observar la nueva tabla creada.
+
+4. Podemos crear una tabla utilizando el asistente también. (Botón derecho del mouse sobre `Tables`, abajo de la base de datos jugos, y escoge la opción `Create table`.
+
+5. Digita el nombre de la tabla como `tbproductos`.
+
+6. Incluye los campos de acuerdo con lo que se muestra abajo:
+
+````sql
+CREATE TABLE tbproductos
+(PRODUCTO VARCHAR (20) ,
+NOMBRE VARCHAR (150) ,
+ENVASE VARCHAR (50) ,
+VOLUMEN VARCHAR (50) ,
+SABOR VARCHAR (50) ,
+PRECIO FLOAT);
+```
+
+7. Haz clic en el botón Apply.
+
+8. Verifica el comando que será ejecutado. Haz clic en` Apply` nuevamente y la tabla será creada.
+
+9. La tabla puede ser eliminada. Para eso digita el comando para crear nuevas tablas.
+
+```sql
+CREATE TABLE TBCLIENTES2(
+DNI VARCHAR(20),
+NOMBRE VARCHAR(150),
+DIRECCION1 VARCHAR(150),
+DIRECCION2 VARCHAR(150),
+BARRIO VARCHAR(50),
+CIUDAD VARCHAR(50),
+ESTADO VARCHAR(50),
+CP VARCHAR(10),
+EDAD SMALLINT,
+SEXO VARCHAR(1),
+LIMITE_CREDITO FLOAT,
+VOLUMEN_COMPRA FLOAT,
+PRIMERA_COMPRA BIT(1));
+
+CREATE TABLE TBCLIENTES3(
+DNI VARCHAR(20),
+NOMBRE VARCHAR(150),
+DIRECCION1 VARCHAR(150),
+DIRECCION2 VARCHAR(150),
+BARRIO VARCHAR(50),
+CIUDAD VARCHAR(50),
+ESTADO VARCHAR(50),
+CP VARCHAR(10),
+EDAD SMALLINT,
+SEXO VARCHAR(1),
+LIMITE_CREDITO FLOAT,
+VOLUMEN_COMPRA FLOAT,
+PRIMERA_COMPRA BIT(1));
+``` 
+
+10. Fueron creadas dos tablas. Ahora vamos a eliminarlas. La primera por el script de comando:
+
+```sql
+DROP TABLE TBCLIENTES3;
+```
+
+11. A través del asistente, basta hacer clic con el botón derecho del mouse sobre el nombre de la tabla, **TBCLIENTES2**, y seleccionar la opción `Drop Table..`.
+
+### Lo que aprendimos
+
+Lo que aprendimos en esta aula:
+
+- Los tipos de datos que componen una tabla.
+- A crear una tabla, tanto por líneas de comando como por el asistente.
+- A eliminar una tabla.
+
+## Proyecto del aula anterior
+¿Comenzando en esta etapa? Aquí puedes descargar los archivos del proyecto que hemos avanzado hasta el aula anterior.
+
+[Descargue los archivos en Github](https://github.com/alura-es-cursos/1790-introduccion-a-sql-con-mysql/tree/aula-4 "Descargue los archivos en Github") o haga clic [aquí](https://github.com/alura-es-cursos/1790-introduccion-a-sql-con-mysql/archive/refs/heads/aula-4.zip "aquí") para descargarlos directamente.
