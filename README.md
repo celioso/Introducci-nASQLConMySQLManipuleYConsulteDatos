@@ -242,3 +242,21 @@ Lo que aprendimos en esta aula:
 ## Descargar el archivo
 
 Les dejo [aquí](https://caelum-online-public.s3.amazonaws.com/1790-Introduccion-sql/04/alura-arquivo.zip "aquí") el enlace para que puedan descargar el archivo comentado en el video anterior
+
+### Actualizando la información sobre los vendedores
+
+Recibimos la siguiente información:
+
+Claudia Moral(00236) recibió un aumento y su comisión pasó a ser 11%. Joan Geraldo de la Fonseca(00233) reclamó que su nombre real es Joan Geraldo de la Fonseca Junior.
+
+Efectúe estas correcciones en la base de datos.
+
+### Opinión del instructor
+
+````sql
+UPDATE TABLA_DE_VENDEDORES SET PORCENTAJE_COMISION = 0.11
+WHERE MATRICULA = '00236';
+
+UPDATE TABLA_DE_VENDEDORES SET NOME = 'Joan Geraldo de la Fonseca Junior'
+WHERE MATRICULA = '00233';
+```
