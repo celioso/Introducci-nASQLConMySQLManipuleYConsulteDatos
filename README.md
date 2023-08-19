@@ -238,3 +238,7 @@ Lo que aprendimos en esta aula:
 ¿Comenzando en esta etapa? Aquí puedes descargar los archivos del proyecto que hemos avanzado hasta el aula anterior.
 
 [Descargue los archivos en Github](https://github.com/alura-es-cursos/1790-introduccion-a-sql-con-mysql/tree/aula-4 "Descargue los archivos en Github") o haga clic [aquí](https://github.com/alura-es-cursos/1790-introduccion-a-sql-con-mysql/archive/refs/heads/aula-4.zip "aquí") para descargarlos directamente.
+
+## Descargar el archivo
+
+Les dejo [aquí](https://caelum-online-public.s3.amazonaws.com/1790-Introduccion-sql/04/alura-arquivo.zip "aquí") el enlace para que puedan descargar el archivo comentado en el video anterior
