@@ -61,7 +61,7 @@ DROP SCHEMA jugos;
 
 18. Ten en cuenta que la base no aparece más en la lista de las bases de datos.
 
-19) Si escogemos la base de datos **jugos2**, con el botón derecho del mouse, podemos también borrar la misma haciendo clic sobre `Drop Schema`.
+19. Si escogemos la base de datos **jugos2**, con el botón derecho del mouse, podemos también borrar la misma haciendo clic sobre `Drop Schema`.
 
 20. Es posible acceder a MySQL por líneas del `command prompt`. Dirígete hacia el subdirectorio `c:\Program Files\MySQL\MySQL Server 8.0\bin`.
 
@@ -170,7 +170,7 @@ PRIMERA_COMPRA BIT(1));
 
 6. Incluye los campos de acuerdo con lo que se muestra abajo:
 
-````sql
+```sql
 CREATE TABLE tbproductos
 (PRODUCTO VARCHAR (20) ,
 NOMBRE VARCHAR (150) ,
@@ -304,7 +304,7 @@ Tips:
 - Crea la clave primaria.
 - Incluye los comandos de INSERT.
 
-```SQL
+```sql
 DROP TABLE TABLA_DE_VENDEDORES;
 
 CREATE TABLE TABLA_DE_VENDEDORES
@@ -493,3 +493,278 @@ Lo que aprendimos en esta aula:
 ¿Comenzando en esta etapa? Aquí puedes descargar los archivos del proyecto que hemos avanzado hasta el aula anterior.
 
 [Descargue los archivos en Github](https://github.com/alura-es-cursos/1790-introduccion-a-sql-con-mysql/tree/aula-5 "Descargue los archivos en Github") o haga clic [aquí](https://github.com/alura-es-cursos/1790-introduccion-a-sql-con-mysql/archive/refs/heads/aula-5.zip "aquí") para descargarlos directamente.
+
+## Descargar el archivo
+
+Les dejo [aquí](https://caelum-online-public.s3.amazonaws.com/1790-Introduccion-sql/05/sql5.1.zip "aquí") el enlace para que puedan descargar el archivo comentado en el video anterior.
+
+### Seleccionando a todos los vendedores
+
+Seleccionar el nombre y matrícula de los vendedores.
+
+```sql
+SELECT NOMBRE, MATRICULA FROM TABLA_DE_VENDEDORES;
+```
+
+## Seleccionando a un vendedor
+
+Verifica los datos registrados de la vendedora Claudia Morais.
+
+```sql
+SELECT * FROM TABLA_DE_VENDEDORES WHERE NOMBRE = 'Claudia Morais';
+```
+
+## Seleccionando vendedores por el valor de la comisión
+Investiga cuáles son los vendedores que poseen comisión superior al 10%.
+
+```sql
+SELECT * FROM TABLA_DE_VENDEDORES WHERE PORCENTAJE_COMISIÓN > 0.10;
+```
+## Seleccionando a un vendedor por fecha
+
+Investiga cuáles son los vendedores que fueron admitidos en la empresa a partir del 2016.
+
+```sql
+SELECT * FROM TABLA_DE_VENDEDORES WHERE YEAR(FECHA_ADMISION) >= 2016;
+```
+
+## Selección compuesta
+
+Revisa cuáles son los vendedores que están de vacaciones y que fueron admitidos antes del 2016.
+
+```sql
+SELECT * FROM TABLA_DE_VENDEDORES WHERE YEAR(FECHA_ADMISION) < 2016 AND DE_VACACIONES = 1;
+```
+
+## Seleccionar a todos los vendedores
+
+Selecciona el nombre y matrícula de los vendedores.
+
+```sql
+SELECT NOMBRE, MATRICULA FROM TABLA_DE_VENDEDORES;
+```
+
+## Haga lo que hicimos en aula
+
+Llegó la hora de que sigas todos los pasos realizados por mí durante esta clase. Si ya lo has hecho ¡Excelente! Si todavía no, es importante que ejecutes lo que fue visto en los vídeos para que puedas continuar con la próxima aula.
+
+1. Accede al Workbench y crea un nuevo script SQL.
+
+2. Abre el archivo sql5.1.sql y ejecuta el script. Las tablas serán eliminadas, recreadas y nuevos registros serán incluídos. El contenido del script es reproducido a continuación:
+
+```sql
+USE jugos;
+
+DROP TABLE tbclientes;
+
+DROP TABLE tbproductos;
+
+CREATE TABLE tbcliente
+(DNI VARCHAR (11) ,
+NOMBRE VARCHAR (100) ,
+DIRECCION1 VARCHAR (150) ,
+DIRECCION2 VARCHAR (150) ,
+BARRIO VARCHAR (50) ,
+CIUDAD VARCHAR (50) ,
+ESTADO VARCHAR (4) ,
+CP VARCHAR (8) ,
+FECHA_NACIMIENTO DATE,
+EDAD SMALLINT,
+SEXO VARCHAR (1) ,
+LIMITE_CREDITO FLOAT ,
+VOLUMEN_COMPRA FLOAT ,
+PRIMERA_COMPRA BIT );
+
+ALTER TABLE tbcliente ADD PRIMARY KEY (DNI);
+
+CREATE TABLE tbproducto
+(PRODUCTO VARCHAR (20) ,
+NOMBRE VARCHAR (150) ,
+ENVASE VARCHAR (50) ,
+TAMANO VARCHAR (50) ,
+SABOR VARCHAR (50) ,
+PRECIO_LISTA FLOAT);
+
+ALTER TABLE tbproducto ADD PRIMARY KEY (PRODUCTO);
+
+INSERT INTO tbcliente (DNI, NOMBRE, DIRECCION1, DIRECCION2, BARRIO, CIUDAD, ESTADO, CP, FECHA_NACIMIENTO, EDAD, SEXO, LIMITE_CREDITO, VOLUMEN_COMPRA, PRIMERA_COMPRA) VALUES ('9283760794', 'Edson Calisaya', 'Sta Úrsula Xitla', '', 'Barrio del Niño Jesús', 'Ciudad de México', 'CDMX', '22002002', '1995-01-07', 25, 'M', 150000, 250000, 1);
+INSERT INTO tbcliente (DNI, NOMBRE, DIRECCION1, DIRECCION2, BARRIO, CIUDAD, ESTADO, CP, FECHA_NACIMIENTO, EDAD, SEXO, LIMITE_CREDITO, VOLUMEN_COMPRA, PRIMERA_COMPRA) VALUES ('7771579779', 'Marcelo Perez', 'F.C. de Cuernavaca 13', '', 'Carola', 'Ciudad de México', 'CDMX', '88202912', '1992-01-25', 29, 'M', 120000, 200000, 1);
+INSERT INTO tbcliente (DNI, NOMBRE, DIRECCION1, DIRECCION2, BARRIO, CIUDAD, ESTADO, CP, FECHA_NACIMIENTO, EDAD, SEXO, LIMITE_CREDITO, VOLUMEN_COMPRA, PRIMERA_COMPRA) VALUES ('5576228758', 'Pedro Olivera', 'Pachuca 75', '', 'Condesa', 'Ciudad de México', 'CDMX', '88192029', '1995-01-14', 25, 'F', 70000, 160000, 1);
+INSERT INTO tbcliente (DNI, NOMBRE, DIRECCION1, DIRECCION2, BARRIO, CIUDAD, ESTADO, CP, FECHA_NACIMIENTO, EDAD, SEXO, LIMITE_CREDITO, VOLUMEN_COMPRA, PRIMERA_COMPRA) VALUES ('8502682733', 'Luis Silva', 'Prol. 16 de Septiembre 1156', '', 'Contadero', 'Ciudad de México', 'CDMX', '82122020', '1995-01-07', 25, 'M', 110000, 190000, 0);
+INSERT INTO tbcliente (DNI, NOMBRE, DIRECCION1, DIRECCION2, BARRIO, CIUDAD, ESTADO, CP, FECHA_NACIMIENTO, EDAD, SEXO, LIMITE_CREDITO, VOLUMEN_COMPRA, PRIMERA_COMPRA) VALUES ('1471156710', 'Erica Carvajo', 'Heriberto Frías 1107', '', 'Del Valle', 'Ciudad de México', 'CDMX', '80012212', '1990-01-01', 30, 'F', 170000, 245000, 0);
+INSERT INTO tbcliente (DNI, NOMBRE, DIRECCION1, DIRECCION2, BARRIO, CIUDAD, ESTADO, CP, FECHA_NACIMIENTO, EDAD, SEXO, LIMITE_CREDITO, VOLUMEN_COMPRA, PRIMERA_COMPRA) VALUES ('3623344710', 'Marcos Rosas', 'Av. Universidad', '', 'Del Valle', 'Ciudad de México', 'CDMX', '22002012', '1995-01-13', 26, 'M', 110000, 220000, 1);
+INSERT INTO tbcliente (DNI, NOMBRE, DIRECCION1, DIRECCION2, BARRIO, CIUDAD, ESTADO, CP, FECHA_NACIMIENTO, EDAD, SEXO, LIMITE_CREDITO, VOLUMEN_COMPRA, PRIMERA_COMPRA) VALUES ('50534475787', 'Abel Pintos', 'Carr. México-Toluca 1499', '', 'Cuajimalpa', 'Ciudad de México', 'CDMX', '22000212', '1995-01-11', 25, 'M', 170000, 260000, 0);
+INSERT INTO tbcliente (DNI, NOMBRE, DIRECCION1, DIRECCION2, BARRIO, CIUDAD, ESTADO, CP, FECHA_NACIMIENTO, EDAD, SEXO, LIMITE_CREDITO, VOLUMEN_COMPRA, PRIMERA_COMPRA) VALUES ('5840119709', 'Gabriel Roca', 'Eje Central Lázaro Cárdenas 911', '', 'Del Valle', 'Ciudad de México', 'CDMX', '80010221', '1985-01-16', 36, 'M', 140000, 210000, 1);
+INSERT INTO tbcliente (DNI, NOMBRE, DIRECCION1, DIRECCION2, BARRIO, CIUDAD, ESTADO, CP, FECHA_NACIMIENTO, EDAD, SEXO, LIMITE_CREDITO, VOLUMEN_COMPRA, PRIMERA_COMPRA) VALUES ('94387575700', 'Walter Soruco', 'Calz. de Tlalpan 2980', '', 'Ex Hacienda Coapa', 'Ciudad de México', 'CDMX', '22000201', '1989-01-20', 31, 'M', 60000, 120000, 1);
+INSERT INTO tbcliente (DNI, NOMBRE, DIRECCION1, DIRECCION2, BARRIO, CIUDAD, ESTADO, CP, FECHA_NACIMIENTO, EDAD, SEXO, LIMITE_CREDITO, VOLUMEN_COMPRA, PRIMERA_COMPRA) VALUES ('8719655770', 'Carlos Santivañez', 'Calz. del Hueso 363', '', 'Floresta Coyoacán', 'Ciudad de México', 'CDMX', '81192002', '1983-01-20', 37, 'M', 200000, 240000, 0);
+INSERT INTO tbcliente (DNI, NOMBRE, DIRECCION1, DIRECCION2, BARRIO, CIUDAD, ESTADO, CP, FECHA_NACIMIENTO, EDAD, SEXO, LIMITE_CREDITO, VOLUMEN_COMPRA, PRIMERA_COMPRA) VALUES ('5648641702', 'Paolo Mendez', 'Martires de Tacubaya 65', '', 'Héroes de Padierna', 'Ciudad de México', 'CDMX', '21002020', '1991-01-30', 29, 'M', 120000, 220000, 0);
+INSERT INTO tbcliente (DNI, NOMBRE, DIRECCION1, DIRECCION2, BARRIO, CIUDAD, ESTADO, CP, FECHA_NACIMIENTO, EDAD, SEXO, LIMITE_CREDITO, VOLUMEN_COMPRA, PRIMERA_COMPRA) VALUES ('492472718', 'Jorge Castro', 'Federal México-Toluca 5690', '', 'Locaxco', 'Ciudad de México', 'CDMX', '22012002', '1994-01-19', 26, 'M', 75000, 95000, 1);
+
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('773912', 'Clean', '1 Litro', 'Naranja', 'Botella PET', 8.01);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('838819', 'Clean', '1,5 Litros', 'Naranja', 'Botella PET', 12.01);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1037797', 'Clean', '2 Litros', 'Naranja', 'Botella PET', 16.01);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('812829', 'Clean', '350 ml', 'Naranja', 'Lata', 2.81);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('479745', 'Clean', '470 ml', 'Naranja', 'Botella de Vidrio', 3.77);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('695594', 'Festival de Sabores', '1,5 Litros', 'Asaí', 'Botella PET', 28.51);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('243083', 'Festival de Sabores', '1,5 Litros', 'Maracuyá', 'Botella PET', 10.51);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1022450', 'Festival de Sabores', '2 Litros', 'Asái', 'Botella PET', 38.01);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('231776', 'Festival de Sabores', '700 ml', 'Asaí', 'Botella de Vidrio', 13.31);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('723457', 'Festival de Sabores', '700 ml', 'Maracuyá', 'Botella de Vidrio', 4.91);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('746596', 'Light', '1,5 Litros', 'Sandía', 'Botella PET', 19.51);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1040107', 'Light', '350 ml', 'Sandía', 'Lata', 4.56);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1002334', 'Línea Citrus', '1 Litro', 'Lima/Limón', 'Botella PET', 7);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1088126', 'Línea Citrus', '1 Litro', 'Limón', 'Botella PET', 7);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1041119', 'Línea Citrus', '700 ml', 'Lima/Limón', 'Botella de Vidrio', 4.9);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1042712', 'Línea Citrus', '700 ml', 'Limón', 'Botella de Vidrio', 4.9);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('520380', 'Pedazos de Frutas', '1 Litro', 'Manzana', 'Botella PET', 12.01);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('788975', 'Pedazos de Frutas', '1,5 Litros', 'Manzana', 'Botella PET', 18.01);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('229900', 'Pedazos de Frutas', '350 ml', 'Manzana', 'Lata', 4.21);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1101035', 'Refrescante', '1 Litro', 'Frutilla/Limón', 'Botella PET', 9.01);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1086543', 'Refrescante', '1 Litro', 'Mango', 'Botella PET', 11.01);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('326779', 'Refrescante', '1,5 Litros', 'Mango', 'Botella PET', 16.51);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('826490', 'Refrescante', '700 ml', 'Frutilla/Limón', 'Botella de Vidrio', 6.31);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1096818', 'Refrescante', '700 ml', 'Mango', 'Botella de Vidrio', 7.71);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('394479', 'Sabor da Montaña', '700 ml', 'Cereza', 'Botella de Vidrio', 8.41);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('783663', 'Sabor da Montaña', '700 ml', 'Frutilla', 'Botella de Vidrio', 7.71);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1000889', 'Sabor da Montaña', '700 ml', 'Uva', 'Botella de Vidrio', 6.31);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('544931', 'Verano', '350 ml', 'Limón', 'Lata', 2.46);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('235653', 'Verano', '350 ml', 'Mango', 'Lata', 3.86);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1051518', 'Verano', '470 ml', 'Limón', 'Botella de Vidrio', 3.3);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1078680', 'Verano', '470 ml', 'Mango', 'Botella de Vidrio', 5.18);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1004327', 'Vida del Campo', '1,5 Litros', 'Sandía', 'Botella PET', 19.51);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1013793', 'Vida del Campo', '2 Litros', 'Cereza/Manzana', 'Botella PET', 24.01);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('290478', 'Vida del Campo', '350 ml', 'Sandía', 'Lata', 4.56);
+INSERT INTO tbProducto (PRODUCTO, NOMBRE, TAMANO, SABOR, ENVASE, PRECIO_LISTA) VALUES ('1002767', 'Vida del Campo', '700 ml', 'Cereza/Manzana', 'Botella de Vidrio', 8.41);
+```
+
+3. Verifica el contenido de las tablas de productos y de clientes digitando:
+
+```sql
+SELECT * FROM tbproducto;
+
+SELECT * FROM tbcliente;
+```
+
+4. Crea un nuevo script. Vamos a hacer algunas consultas a la base de datos.
+
+5. Digita:
+```sql
+SELECT * FROM tbcliente;
+
+SELECT DNI, NOMBRE, DIRECCION1, DIRECCION2, BARRIO, CIUDAD, ESTADO,CP, FECHA_NACIMIENTO, EDAD, 
+SEXO, LIMITE_CREDITO, VOLUMEN_COMPRA, PRIMERA_COMPRA FROM tbcliente;
+```
+
+Ten en cuenta que los dos comandos retornan el mismo *output*.
+
+Podemos usar el `*` para seleccionar todos los campos o discriminar uno por uno.
+
+6. Podemos seleccionar apenas algunos campos:
+```sql
+SELECT DNI, NOMBRE FROM tbcliente;
+
+SELECT NOMBRE, SEXO, EDAD, DIRECCION1 FROM tbcliente;
+```
+
+7. También es posible limitar la salida de registros:
+```sql
+SELECT NOMBRE, SEXO, EDAD, DIRECCION1 FROM tbcliente LIMIT 6;
+```
+
+8. O también crear un rótulo (que también llamamos alias) para cada campo:
+```sql
+SELECT NOMBRE AS Nombre_Completo, SEXO AS Género, EDAD AS Años, DIRECCION1 AS Domicilio FROM tbcliente;
+```
+
+9. Los registros pueden ser filtrados utilizando el mismo tipo de cláusula `WHERE` usada con los comandos `UPDATE` y `DELETE`.
+
+```sql
+SELECT * FROM tbproducto WHERE PRODUCTO = '1042712';
+```
+
+10. Pero no es sólo a través de la llave primaria que podemos filtrar las consultas:
+```sql
+SELECT * FROM tbproducto WHERE SABOR = 'Maracuyá';
+
+SELECT * FROM tbproducto WHERE ENVASE = 'Botella de Vidrio';
+```
+
+11. Inclusive, este tipo de filtro WHERE se puede utilizar conlos comandos `UPDATE` y `DELETE`. Digita el siguiente comando `UPDATE` para realizar un cambio en varios registros al mismo tiempo:
+```sql
+UPDATE tbproducto SET SABOR = 'Cítrico' WHERE SABOR = 'Limón';
+```
+
+12. Podemos hacer consultas usando condiciones basadas en números (decimales o enteros). Crea un nuevo script y vamos a realizar algunos ejemplos:
+```sql
+SELECT * FROM tbcliente WHERE EDAD = 27;
+```
+Aquí vemos una igualdad.
+
+13. Pero podemos usar también los signos de mayor que, menor que, mayor o igual que, menor o igual que. Observa algunos ejemplos:
+```sql
+SELECT * FROM tbcliente WHERE EDAD > 27;
+
+SELECT * FROM tbcliente WHERE EDAD < 27;
+
+SELECT * FROM tbcliente WHERE EDAD <= 27;
+```
+
+14. Tenemos el signo diferente que se expresa como <>. Míralo a continuación:
+
+```sql
+SELECT * FROM tbcliente WHERE EDAD <> 27;
+```
+
+15. Las condiciones de mayor que, menor que, mayor o igual a, menor o igual a, o diferente de pueden ser aplicables a textos. El criterio será el orden alfabético:
+```sql
+SELECT * FROM tbcliente WHERE  NOMBRE > 'Erica Carvajo';
+
+SELECT * FROM tbcliente WHERE  NOMBRE <= 'Erica Carvajo';
+```
+
+16. Las condiciones de igual, mayor que, menor que, mayor o igual a, menor o igual a, y diferente de, no se aplican muy bien a los campos FLOAT:
+```sql
+SELECT * FROM tbproducto WHERE PRECIO_LISTA = 28.51;
+
+SELECT * FROM tbproducto WHERE PRECIO_LISTA < 28.51;
+
+SELECT * FROM tbproducto WHERE PRECIO_LISTA > 28.51;
+
+SELECT * FROM tbproducto WHERE PRECIO_LISTA <> 28.51;
+```
+
+17. El comando BETWEEN puede ser aplicado.
+```sql
+SELECT * FROM tbproducto WHERE PRECIO_LISTA BETWEEN 28.49 AND 28.52;
+```
+
+18. Podemos usar como filtro fechas. Mira algunos ejemplos:
+```sql
+SELECT * FROM tbcliente WHERE FECHA_NACIMIENTO = '1995-01-13';
+
+SELECT * FROM tbcliente WHERE FECHA_NACIMIENTO < '1995-01-13';
+
+SELECT * FROM tbcliente WHERE FECHA_NACIMIENTO >= '1995-01-13';
+```
+
+19. Existen algunas funciones de fecha que pueden ser usadas como filtros.
+```sql
+SELECT * FROM tbcliente WHERE YEAR(FECHA_NACIMIENTO) = 1995;
+
+SELECT * FROM tbcliente WHERE DAY(FECHA_NACIMIENTO) = 20;
+```
+
+20. Podemos utilizar filtros compuestos usando, entre cada prueba, los comandos `AND` u `OR`. Observa a a continuación algunos ejemplos que se pueden ejecutar en Workbench:
+```sql
+SELECT * FROM tbproducto WHERE PRECIO_LISTA BETWEEN 28.49 AND 28.52;
+
+SELECT * FROM tbproducto WHERE PRECIO_LISTA >= 28.49 AND  PRECIO_LISTA <=28.52;
+
+SELECT * FROM tbproducto WHERE ENVASE = 'Lata' OR ENVASE = 'Botella PET';
+
+SELECT * FROM tbproducto WHERE PRECIO_LISTA >= 15 AND  PRECIO_LISTA <=25;
+
+SELECT * FROM tbproducto WHERE (PRECIO_LISTA >= 15 AND  PRECIO_LISTA <=25) OR (ENVASE = 'Lata' OR ENVASE = 'Botella PET');
+
+SELECT * FROM tbproducto WHERE (PRECIO_LISTA >= 15 AND  TAMANO = '1 Litro') OR (ENVASE = 'Lata' OR ENVASE = 'Botella PET');
+```
