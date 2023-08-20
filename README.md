@@ -768,3 +768,18 @@ SELECT * FROM tbproducto WHERE (PRECIO_LISTA >= 15 AND  PRECIO_LISTA <=25) OR (E
 
 SELECT * FROM tbproducto WHERE (PRECIO_LISTA >= 15 AND  TAMANO = '1 Litro') OR (ENVASE = 'Lata' OR ENVASE = 'Botella PET');
 ```
+
+### Proyecto Final
+Aquí puedes descargar los archivos del proyecto completo.
+
+[Descargue los archivos en Github](https://github.com/alura-es-cursos/1790-introduccion-a-sql-con-mysql/tree/proyecto-final "Descargue los archivos en Github") o haga clic [aquí ](https://github.com/alura-es-cursos/1790-introduccion-a-sql-con-mysql/archive/refs/heads/proyecto-final.zip "aquí ")para descargarlos directamente.
+
+### Lo que aprendimos
+
+Lo que aprendimos en esta aula:
+
+- A visualizar los datos de una tabla.
+- A separar la selección de datos.
+- A utilizar las condiciones mayor que y menor que en la selección de datos de la tabla.
+- A filtrar los datos a través de fechas.
+- A implementar filtros compuestos.
